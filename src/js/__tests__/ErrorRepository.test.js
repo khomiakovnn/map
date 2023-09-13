@@ -1,34 +1,19 @@
 import ErrorRepository from '../ErrorRepository.js';
 
-// test('normal persona input', () => {
-//   const team = new Team();
-//   team.add('username');
-//   const result = new Set();
-//   result.add('username');
-//   expect(team.members).toEqual(result);
-// });
+test('List exist', () => {
+  const repository = new ErrorRepository();
+  const result = new Map;
+  result.set(1, 'Error 1 description');
+  result.set(2, 'Error 2 description');
+  expect(repository.errors).toEqual(result);
+});
 
-// function typeTest() {
-//   const team = new Team();
-//   team.add('Ivan');
-//   return team.add('Ivan');
-// }
-// test('double persona input', () => {
-//   expect(typeTest).toThrow('Character is alresdy in team');
-// });
+test('Unknown error', () => {
+  const repository = new ErrorRepository();
+  expect(repository.translate(3)).toEqual('Unknown error');
+});
 
-// test('multy person input', () => {
-//   const team = new Team();
-//   team.addAll('username1', 'username2');
-//   const result = new Set();
-//   result.add('username1');
-//   result.add('username2');
-//   expect(team.members).toEqual(result);
-// });
-
-// test('array make', () => {
-//   const team = new Team();
-//   team.addAll('username1', 'username2');
-//   const result = ['username1', 'username2'];
-//   expect(team.toArray()).toEqual(result);
-// });
+test('Error 1', () => {
+  const repository = new ErrorRepository();
+  expect(repository.translate(1)).toEqual('Error 1 description');
+});
